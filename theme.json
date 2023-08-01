@@ -26,6 +26,36 @@
           "name": "Light",
           "slug": "light",
           "color": "#F9FAFB"
+        },
+        {
+          "name": "Custom Black",
+          "slug": "custom-black",
+          "color": "#101419"
+        },
+        {
+          "name": "Custom Yellow",
+          "slug": "custom-yellow",
+          "color": "#ffeab6"
+        },
+        {
+          "name": "Custom Light Gray",
+          "slug": "custom-light-gray",
+          "color": "#f6f3f2"
+        },
+        {
+          "name": "Custom Dark Red",
+          "slug": "custom-dark-red",
+          "color": "#C17E70"
+        },
+        {
+          "name": "Custom Light Yellow",
+          "slug": "custom-light-yellow",
+          "color": "#faf0d5"
+        },
+        {
+          "name": "Custom Gray",
+          "slug": "custom-gray",
+          "color": "#a6a6a6"
         }
       ]
     },

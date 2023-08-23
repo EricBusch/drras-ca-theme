@@ -46,92 +46,44 @@
 </div>
 <!-- /Hero -->
 
-<section class="py-12">
+<!-- Featured Treatments -->
+<section class="py-12 lg:py-24">
 	<div class="max-w-7xl mx-auto px-8 w-full">
 		<div class="flex flex-col items-center">
-			<div class="uppercase text-gray-600 font-light">
+			<div class="uppercase text-gray-600 font-light text-center">
 				<?php drras_kses_e( drras_get_post_field( 'treatment_pre_header_text', 'Schedule a Consultation' ) ); ?>
 			</div>
-			<h3 class="text-5xl font-extrabold gray-800 mt-2 mb-4">
+			<h3 class="text-5xl font-extrabold gray-800 mt-2 mb-4 text-center">
 				<?php drras_kses_e( drras_get_post_field( 'treatment_header_text', 'Cosmetic Treatments' ) ); ?>
 			</h3>
-			<p class="text-xl text-gray-500">
+			<p class="text-xl text-gray-500 text-center">
 				<?php drras_kses_e( drras_get_post_field( 'treatment_description', 'We offer the following surgical and non-surgical cosmetic procedures.' ) ); ?>
 			</p>
-
-
-			<?php if ( have_rows( 'education', 'option' ) ) : ?>
-				<?php while ( have_rows( 'education', 'option' ) ) : ?>
-					<?php the_row(); ?>
-					<?php if ( have_rows( 'items' ) ) : ?>
-						<ul class="flex flex-col gap-4 list-none mt-12">
-							<?php while ( have_rows( 'items' ) ) : ?>
-								<?php the_row(); ?>
-								<li class="flex flex-col space-y-0">
-									<span class="text-gray-700">
-										<?php drras_kses_e( get_sub_field( 'title' ) ); ?>
-									</span>
-									<?php if ( $desc = get_sub_field( 'description' ) ) : ?>
-										<span class="text-sm text-gray-500">
-											<?php drras_kses_e( $desc ); ?>
-										</span>
-									<?php endif; ?>
-								</li>
-							<?php endwhile; ?>
-						</ul>
-					<?php endif; ?>
-				<?php endwhile; ?>
+			<?php if ( $treatments = get_field( 'featured_treatments' ) ) : ?>
+				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-12 mt-12">
+					<?php foreach ( $treatments as $key => $treatment ) : ?>
+						<a href="<?php echo get_permalink( $treatment->ID ); ?>"
+						   title="Learn more about <?php esc_attr_e( $treatment->post_title ); ?>"
+						   class="flex flex-row items-center justify-center aspect-square shadow-lg rounded overflow-hidden p-4 bg-gradient-to-b from-white via-white to-gray-50/70 hover:to-white border border-gray-100 hover:shadow-sm transition duration-200 group">
+							<div class="flex flex-col items-center">
+								<img
+									src="<?php echo wp_get_attachment_image_url( get_field( 'header_image', $treatment->ID )['ID'] ); ?>"
+									alt="Image for <?php esc_attr_e( $treatment->post_title ); ?>"
+									class="aspect-square w-36 h-36 lg:w-24 lg:h-24 rounded shadow group-hover:shadow-lg transition"
+								/>
+								<h4 class="font-bold text-center mt-4"><?php drras_kses_e( get_field( 'treatment_short_name', $treatment->ID ) ); ?></h4>
+								<p class="text-center text-sm text-gray-600"><?php drras_kses_e( $treatment->post_title ); ?></p>
+							</div>
+						</a>
+					<?php endforeach; ?>
+				</div>
 			<?php endif; ?>
-
-
-			<?php if ( have_rows( 'appointments', 'option' ) ) : ?>
-				<?php while ( have_rows( 'appointments', 'option' ) ) : ?>
-					<?php the_row(); ?>
-					<?php if ( have_rows( 'items' ) ) : ?>
-						<ul class="flex flex-col gap-4 list-none mt-12">
-							<?php while ( have_rows( 'items' ) ) : ?>
-								<?php the_row(); ?>
-								<li class="flex flex-col space-y-0">
-									<span class="text-gray-700">
-										<?php drras_kses_e( get_sub_field( 'title' ) ); ?>
-									</span>
-									<?php if ( $desc = get_sub_field( 'description' ) ) : ?>
-										<span class="text-sm text-gray-500">
-											<?php drras_kses_e( $desc ); ?>
-										</span>
-									<?php endif; ?>
-								</li>
-							<?php endwhile; ?>
-						</ul>
-					<?php endif; ?>
-				<?php endwhile; ?>
-			<?php endif; ?>
-
-
-			<?php if ( have_rows( 'publications', 'option' ) ) : ?>
-				<?php while ( have_rows( 'publications', 'option' ) ) : ?>
-					<?php the_row(); ?>
-					<?php if ( have_rows( 'items' ) ) : ?>
-						<ul class="flex flex-col gap-4 list-none mt-12">
-							<?php while ( have_rows( 'items' ) ) : ?>
-								<?php the_row(); ?>
-								<li class="flex flex-col space-y-0">
-									<span class="text-gray-700">
-										<?php drras_kses_e( drras_boldify_rassouli( get_sub_field( 'citation' ) ) ); ?>
-									</span>
-								</li>
-							<?php endwhile; ?>
-						</ul>
-					<?php endif; ?>
-				<?php endwhile; ?>
-			<?php endif; ?>
-
-
 		</div>
 	</div>
 </section>
+<!-- /Featured Treatments -->
 
-
+<!-- Certifications and Memberships -->
 <section class="py-20 bg-gray-100 tails-selected-element">
 	<div class="flex flex-col items-start px-10 mx-auto space-y-20 lg:space-y-0 lg:flex-row max-w-7xl">
 
@@ -139,14 +91,20 @@
 			class="flex flex-col justify-center flex-shrink-0 w-full h-full max-w-lg space-y-5 text-gray-800 lg:max-w-none lg:w-5/12 xl:w-6/12">
 			<div class="flex items-center space-x-5 text-blue-500" data-primary="blue-500">
 				<div class="w-20 h-0.5 bg-blue-500" data-primary="blue-500"></div>
-				<p class="text-sm font-bold tracking-wide uppercase">Dr. Rassouli</p>
+				<p class="text-sm font-bold tracking-wide uppercase">
+					<?php drras_kses_e( drras_get_post_field( 'certification_pre_header_text', 'Dr. Rassouli' ) ); ?>
+				</p>
 			</div>
-			<h2 class="text-4xl font-black xl:text-5xl">Certifications &amp; Memberships</h2>
+			<h2 class="text-4xl font-black xl:text-5xl">
+				<?php drras_kses_e( drras_get_post_field( 'certification_header_text', 'Certifications & Memberships' ) ); ?>
+			</h2>
 			<div
 				class="relative flex flex-col items-start w-full space-y-5 sm:items-center sm:flex-row sm:space-y-0 sm:space-x-3">
-				<a href="#_"
+				<a href="<?php echo drras_get_post_field( 'certification_learn_more_page', '#' ); ?>"
 				   class="inline-block w-full px-6 py-4 font-bold text-center text-white bg-blue-600 rounded sm:w-auto"
-				   data-primary="blue-600" data-rounded="rounded">Learn More</a>
+				   data-primary="blue-600" data-rounded="rounded">
+					<?php drras_kses_e( drras_get_post_field( 'certification_button_text', 'Learn More' ) ); ?>
+				</a>
 			</div>
 		</div>
 
@@ -184,6 +142,6 @@
 		</div>
 	</div>
 </section>
-
+<!-- /Certifications and Memberships -->
 
 <?php get_footer(); ?>

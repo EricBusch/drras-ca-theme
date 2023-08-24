@@ -67,7 +67,7 @@ $next_treatment = drras_get_next_surgicaltreatment( get_the_ID() );
 ?>
 <?php if ( $prev_treatment && $next_treatment ) : ?>
 	<section class="mb-px border-t border-gray-200">
-		<div class="default-w default-px">
+		<div class="default-w md:default-px">
 			<div class="flex flex-col md:flex-row items-center gap-x-px">
 
 				<a href="<?php echo esc_url( get_permalink( $prev_treatment->ID ) ); ?>"

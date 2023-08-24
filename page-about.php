@@ -41,13 +41,17 @@
 			<!-- About, CV, Education, Appointments, Publications -->
 			<div class="">
 
-				<h2 class="uppercase font-bold text-sm text-gray-600">About Dr. Rassouli</h2>
+				<h2 class="uppercase font-bold text-sm text-gray-600">
+					<?php drras_kses_e( drras_get_post_field( 'description_header', 'About Dr. Rassouli' ) ); ?>
+				</h2>
 
 				<div class="prose mt-6 mb-12">
 					<?php the_content(); ?>
 				</div>
 
-				<h2 class="uppercase font-bold text-sm text-gray-600">Curriculum Vitae</h2>
+				<h2 class="uppercase font-bold text-sm text-gray-600">
+					<?php drras_kses_e( drras_get_post_field( 'curriculum_vitae_header', 'Curriculum Vitae' ) ); ?>
+				</h2>
 
 				<!-- Education -->
 				<div
@@ -65,7 +69,9 @@
 							     stroke="currentColor">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
 							</svg>
-							<span class="font-light text-xl tracking-wide">Education</span>
+							<span class="font-light text-xl tracking-wide">
+								<?php drras_kses_e( drras_get_post_field( 'education_header', 'Education' ) ); ?>
+							</span>
 						</h3>
 						<div x-show="activeAccordion==id" x-collapse x-cloak>
 							<div class="pl-2">
@@ -113,7 +119,9 @@
 							     stroke="currentColor">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
 							</svg>
-							<span class="font-light text-xl tracking-wide">Appointments, Licensures & Memberships</span>
+							<span class="font-light text-xl tracking-wide">
+								<?php drras_kses_e( drras_get_post_field( 'appointments_header', 'Appointments, Licensures & Memberships' ) ); ?>
+							</span>
 						</h3>
 						<div x-show="activeAccordion==id" x-collapse x-cloak>
 							<div class="pl-2">
@@ -161,7 +169,9 @@
 							     stroke="currentColor">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
 							</svg>
-							<span class="font-light text-xl tracking-wide">Publications</span>
+							<span class="font-light text-xl tracking-wide">
+								<?php drras_kses_e( drras_get_post_field( 'publications_header', 'Publications' ) ); ?>
+							</span>
 						</h3>
 						<div x-show="activeAccordion==id" x-collapse x-cloak>
 							<div class="pl-2">
@@ -194,7 +204,9 @@
 			<!-- Membership Logos -->
 			<div class="">
 
-				<h2 class="uppercase font-bold text-sm text-gray-600">Certification & Membership</h2>
+				<h2 class="uppercase font-bold text-sm text-gray-600">
+					<?php drras_kses_e( drras_get_post_field( 'membership_header', 'Certification & Membership' ) ); ?>
+				</h2>
 
 				<?php if ( have_rows( 'certifications', 'option' ) ) : ?>
 					<?php while ( have_rows( 'certifications', 'option' ) ) : ?>

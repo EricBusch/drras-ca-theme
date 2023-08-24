@@ -190,7 +190,7 @@ add_action( 'tailpress_header', function (): void {
 	$label    = esc_html( trim( get_field( 'banner_label', 'option' ) ) );
 	$text     = esc_html( trim( get_field( 'banner_text', 'option' ) ) );
 	$has_link = get_field( 'banner_has_link', 'option' ) === 'yes';
-	$url      = esc_url( trim( get_field( 'banner_page_url', 'option' ) ) );
+	$url      = esc_url( trim( (string) get_field( 'banner_page_url', 'option' ) ) );
 	$color    = trim( get_field( 'banner_colour', 'option' ) );
 
 	if ( ! $label && ! $text ) {

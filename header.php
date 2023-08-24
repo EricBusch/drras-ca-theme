@@ -19,9 +19,9 @@
 
 	<?php do_action( 'tailpress_header' ); ?>
 
-	<header class="relative bg-white border-b border-gray-200">
+	<header x-data="{ open: false }" class="relative bg-white border-b border-gray-200">
 
-		<div class="flex items-center justify-between h-32 mx-auto default-w default-px">
+		<div class="flex items-center justify-between h-24 md:h-32 mx-auto default-w default-px">
 
 			<!-- Logo -->
 			<a href="/"
@@ -39,10 +39,10 @@
 				<?php
 				wp_nav_menu( [
 					'container_id'    => 'primary-menu',
-					'container_class' => 'hidden mt-4 p-4 lg:mt-0 lg:p-0 lg:bg-transparent lg:block text-sm text-gray-600 uppercase tracking-wider',
-					'menu_class'      => 'lg:flex lg:-mx-4',
+					'container_class' => 'hidden mt-4 p-4 sm:mt-0 sm:p-0 sm:bg-transparent sm:block text-sm text-gray-600 uppercase tracking-wider',
+					'menu_class'      => 'sm:flex sm:-mx-4',
 					'theme_location'  => 'primary',
-					'li_class'        => 'lg:mx-4',
+					'li_class'        => 'sm:mx-2 md:mx-4',
 					'fallback_cb'     => false,
 				] );
 				?>
@@ -51,18 +51,63 @@
 				<?php get_template_part( 'template-parts/button', 'contact' ); ?>
 
 				<!-- Mobile Button -->
-				<div class="flex items-center justify-center h-full text-gray-200 md:hidden">
+				<div @click="open = !open" class="flex items-center justify-center h-full text-gray-500 sm:hidden">
 					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
 					     xmlns="http://www.w3.org/2000/svg">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-						      d="M4 8h16M4 16h16"></path>
+						<path stroke-linecap="round"
+						      stroke-linejoin="round"
+						      stroke-width="2"
+						      d="M4 8h16M4 16h16">
+						</path>
 					</svg>
 				</div>
 				<!-- /Mobile Button -->
 
 			</div>
-
 		</div>
+
+
+		<!-- Mobile Menu -->
+		<div x-show="open" x-cloak class="default-w default-px bg-white py-6">
+			<?php
+			$items = wp_get_nav_menu_items( 'primary-menu' );
+			$phone = get_field( 'phone_number', 'options' );
+			$email = get_field( 'email_address', 'options' );
+			?>
+			<div class="grid grid-cols-2">
+
+				<nav
+					class="flex flex-col gap-y-4">
+					<?php foreach ( $items as $item ) : ?>
+						<?php echo drras_get_menu_item_markup( $item, [ 'class' => 'text-sm text-gray-600 uppercase tracking-wider' ] ); ?>
+					<?php endforeach; ?>
+				</nav>
+
+				<div class="flex flex-col space-y-2 text-xs">
+					<strong class="mb-2">Contact Us</strong>
+					<?php if ( $phone ) : ?>
+						<a href="<?php echo drras_get_phone_href( $phone ); ?>"
+						   class="flex flex-row items-center space-x-2 py-1"
+						   title="Phone us">
+							<?php echo drras_get_svg( 'phone-rotary-regular', 'w-4 h-4 fill-gray-300 shrink-0' ); ?>
+							<span class="whitespace-nowrap"><?php esc_html_e( $phone ); ?></span>
+						</a>
+					<?php endif; ?>
+
+					<?php if ( $email ) : ?>
+						<a href="<?php echo drras_get_email_href( $email ); ?>"
+						   class="flex flex-row items-center space-x-2 py-1"
+						   title="Email us">
+							<?php echo drras_get_svg( 'at-regular', 'w-4 h-4 fill-gray-300 shrink-0' ); ?>
+							<span class="whitespace-nowrap"><?php esc_html_e( $email ); ?></span>
+						</a>
+					<?php endif; ?>
+
+				</div>
+			</div>
+		</div>
+		<!-- /Mobile Menu -->
+
 	</header>
 
 	<!-- div#content -->

@@ -10,7 +10,7 @@
 				<div
 					class="flex flex-col items-start justify-center w-full pt-10 pb-10 -mt-10 md:w-1/2 md:pb-24 md:pr-16">
 					<div
-						class="px-3 text-sm font-medium py-1.5 rounded-md bg-gray-800 opacity-100 mb-10 text-gray-400 uppercase">
+						class="px-3 text-sm font-medium py-1.5 rounded-md bg-gray-800 mb-4 mt-6 text-gray-400 uppercase">
 						<?php drras_kses_e( drras_get_post_field( 'pre_header_text', 'Meet Dr. Rassouli' ) ); ?>
 					</div>
 					<h1 class="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-200 via-gray-50 to-gray-400 pb-2">
@@ -24,12 +24,12 @@
 					<div class="flex flex-row items-center space-x-4 mx-auto md:mx-0">
 						<a href="<?php echo drras_get_permalink( 'contact' ) ?>"
 						   title="Contact us"
-						   class="w-full px-5 py-2 text-lg font-normal text-center text-gray-800 bg-gray-100 rounded-lg md:w-auto whitespace-nowrap">
+						   class="w-full px-5 py-2 text-lg font-normal text-center text-black text-opacity-90 bg-profile-yellow-light rounded-lg md:w-auto whitespace-nowrap">
 							<?php drras_kses_e( drras_phrase( 'contact_us' ) ); ?>
 						</a>
 						<a href="<?php echo drras_get_permalink( 'treatments' ) ?>"
 						   title="View available treatments"
-						   class="w-full px-5 py-2 text-lg font-normal text-center text-white ring bg-transparent rounded-lg md:w-auto whitespace-nowrap">
+						   class="w-full px-5 py-2 text-lg font-normal text-center text-profile-yellow-light ring-1 ring-profile-yellow-light bg-transparent rounded-lg md:w-auto whitespace-nowrap">
 							<?php drras_kses_e( drras_phrase( 'view_treatments' ) ); ?>
 						</a>
 					</div>
@@ -81,7 +81,9 @@
 			<div
 				class="relative flex flex-col justify-center mt-12">
 				<a href="<?php echo drras_get_permalink( 'treatments' ); ?>"
-				   class="inline-block w-full px-6 py-5 font-bold text-center text-white bg-blue-600 rounded sm:w-auto leading-none">
+				   role="button"
+				   title="View all available treatments"
+				   class="inline-flex items-center gap-x-2 rounded-md bg-gradient-to-b from-profile-yellow-light to-profile-yellow-dark px-6 py-5 font-semibold text-black text-opacity-80 hover:text-opacity-95 shadow hover:shadow-none transform duration-100 hover:translate-y-px leading-none">
 					<?php drras_kses_e( drras_get_post_field( 'treatment_see_all_link_text', 'See all available treatments' ) ); ?>
 				</a>
 			</div>
@@ -96,8 +98,8 @@
 
 		<div
 			class="flex flex-col justify-center flex-shrink-0 w-full h-full max-w-lg space-y-5 text-gray-800 lg:max-w-none lg:w-5/12 xl:w-6/12">
-			<div class="flex items-center space-x-5 text-blue-500" data-primary="blue-500">
-				<div class="w-20 h-0.5 bg-blue-500" data-primary="blue-500"></div>
+			<div class="flex items-center space-x-5 text-gray-500" data-primary="blue-500">
+				<div class="w-20 h-0.5 bg-gray-400"></div>
 				<p class="text-sm font-bold tracking-wide uppercase">
 					<?php drras_kses_e( drras_get_post_field( 'certification_pre_header_text', 'Dr. Rassouli' ) ); ?>
 				</p>
@@ -108,8 +110,9 @@
 			<div
 				class="relative flex flex-col items-start w-full space-y-5 sm:items-center sm:flex-row sm:space-y-0 sm:space-x-3">
 				<a href="<?php echo drras_get_post_field( 'certification_learn_more_page', '#' ); ?>"
-				   class="inline-block w-full px-6 py-4 font-bold text-center text-white bg-blue-600 rounded sm:w-auto"
-				   data-primary="blue-600" data-rounded="rounded">
+				   role="button"
+				   title="Learn more about Dr. Rassouli"
+				   class="inline-flex items-center gap-x-2 rounded-md bg-gradient-to-b from-gray-800 to-gray-900 px-5 py-4 font-semibold text-gray-50 hover:text-white shadow hover:shadow-none transform duration-100 hover:translate-y-px leading-none">
 					<?php drras_kses_e( drras_get_post_field( 'certification_button_text', 'Learn More' ) ); ?>
 				</a>
 			</div>

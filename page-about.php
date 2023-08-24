@@ -35,285 +35,193 @@
 
 <section class="py-12 lg:py-24">
 	<div class="default-w default-px">
-		<div class="prose mb-12">
-			<?php the_content(); ?>
-		</div>
 
-		<h2 class="uppercase font-bold text-sm text-gray-600">Curriculum Vitae</h2>
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
 
-		<div
-			x-data="{activeAccordion: '', setActiveAccordion(id) { this.activeAccordion = (this.activeAccordion == id) ? '' : id }}"
-			class="relative w-full mt-6">
+			<!-- About, CV, Education, Appointments, Publications -->
+			<div class="">
 
-			<div x-data="{ id: $id('accordion') }"
-			     :class="{ 'text-neutral-900': activeAccordion==id, '': activeAccordion!=id }"
-			     class="group">
-				<h3 @click="setActiveAccordion(id)" class="flex flex-row items-center select-none cursor-pointer">
-					<svg class="w-5 h-5 duration-300 ease-out" :class="{ '-rotate-[45deg]': activeAccordion==id }"
-					     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-					     stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
-					</svg>
-					<span class="font-light text-xl tracking-wide">Education</span>
-				</h3>
-				<div x-show="activeAccordion==id" x-collapse x-cloak>
-					<div class="pl-2">
-						<?php if ( have_rows( 'education', 'option' ) ) : ?>
-							<?php while ( have_rows( 'education', 'option' ) ) : ?>
-								<?php the_row(); ?>
-								<?php if ( have_rows( 'items' ) ) : ?>
-									<ul class="flex flex-col gap-4 list-none mt-4 border-l border-gray-200 pl-4">
-										<?php while ( have_rows( 'items' ) ) : ?>
-											<?php the_row(); ?>
-											<li class="flex flex-col space-y-0">
+				<h2 class="uppercase font-bold text-sm text-gray-600">About Dr. Rassouli</h2>
+
+				<div class="prose mt-6 mb-12">
+					<?php the_content(); ?>
+				</div>
+
+				<h2 class="uppercase font-bold text-sm text-gray-600">Curriculum Vitae</h2>
+
+				<!-- Education -->
+				<div
+					x-data="{activeAccordion: '', setActiveAccordion(id) { this.activeAccordion = (this.activeAccordion == id) ? '' : id }}"
+					class="relative w-full mt-6">
+
+					<div x-data="{ id: $id('accordion') }"
+					     :class="{ 'text-neutral-900': activeAccordion==id, '': activeAccordion!=id }"
+					     class="group">
+						<h3 @click="setActiveAccordion(id)"
+						    class="flex flex-row items-center select-none cursor-pointer">
+							<svg class="w-5 h-5 duration-300 ease-out"
+							     :class="{ '-rotate-[45deg]': activeAccordion==id }"
+							     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+							     stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
+							</svg>
+							<span class="font-light text-xl tracking-wide">Education</span>
+						</h3>
+						<div x-show="activeAccordion==id" x-collapse x-cloak>
+							<div class="pl-2">
+								<?php if ( have_rows( 'education', 'option' ) ) : ?>
+									<?php while ( have_rows( 'education', 'option' ) ) : ?>
+										<?php the_row(); ?>
+										<?php if ( have_rows( 'items' ) ) : ?>
+											<ul class="flex flex-col gap-4 list-none mt-4 border-l border-gray-200 pl-4">
+												<?php while ( have_rows( 'items' ) ) : ?>
+													<?php the_row(); ?>
+													<li class="flex flex-col space-y-0">
 												<span class="text-gray-700">
 													<?php drras_kses_e( get_sub_field( 'title' ) ); ?>
 												</span>
-												<?php if ( $desc = get_sub_field( 'description' ) ) : ?>
-													<span class="text-sm text-gray-500">
+														<?php if ( $desc = get_sub_field( 'description' ) ) : ?>
+															<span class="text-sm text-gray-500">
 														<?php drras_kses_e( $desc ); ?>
 													</span>
-												<?php endif; ?>
-											</li>
-										<?php endwhile; ?>
-									</ul>
+														<?php endif; ?>
+													</li>
+												<?php endwhile; ?>
+											</ul>
+										<?php endif; ?>
+									<?php endwhile; ?>
 								<?php endif; ?>
-							<?php endwhile; ?>
-						<?php endif; ?>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+				<!-- /Education -->
 
+				<!-- Appointments, Licensures, Memberships -->
+				<div
+					x-data="{activeAccordion: '', setActiveAccordion(id) { this.activeAccordion = (this.activeAccordion == id) ? '' : id }}"
+					class="relative w-full mt-6">
 
-		<div
-			x-data="{activeAccordion: '', setActiveAccordion(id) { this.activeAccordion = (this.activeAccordion == id) ? '' : id }}"
-			class="relative w-full mt-6">
-
-			<div x-data="{ id: $id('accordion') }"
-			     :class="{ 'text-neutral-900': activeAccordion==id, '': activeAccordion!=id }"
-			     class="group">
-				<h3 @click="setActiveAccordion(id)" class="flex flex-row items-center select-none cursor-pointer">
-					<svg class="w-5 h-5 duration-300 ease-out" :class="{ '-rotate-[45deg]': activeAccordion==id }"
-					     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-					     stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
-					</svg>
-					<span class="font-light text-xl tracking-wide">Appointments, Licensures & Memberships</span>
-				</h3>
-				<div x-show="activeAccordion==id" x-collapse x-cloak>
-					<div class="pl-2">
-						<?php if ( have_rows( 'appointments', 'option' ) ) : ?>
-							<?php while ( have_rows( 'appointments', 'option' ) ) : ?>
-								<?php the_row(); ?>
-								<?php if ( have_rows( 'items' ) ) : ?>
-									<ul class="flex flex-col gap-4 list-none mt-4 border-l border-gray-200 pl-4">
-										<?php while ( have_rows( 'items' ) ) : ?>
-											<?php the_row(); ?>
-											<li class="flex flex-col space-y-0">
+					<div x-data="{ id: $id('accordion') }"
+					     :class="{ 'text-neutral-900': activeAccordion==id, '': activeAccordion!=id }"
+					     class="group">
+						<h3 @click="setActiveAccordion(id)"
+						    class="flex flex-row items-center select-none cursor-pointer">
+							<svg class="w-5 h-5 duration-300 ease-out"
+							     :class="{ '-rotate-[45deg]': activeAccordion==id }"
+							     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+							     stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
+							</svg>
+							<span class="font-light text-xl tracking-wide">Appointments, Licensures & Memberships</span>
+						</h3>
+						<div x-show="activeAccordion==id" x-collapse x-cloak>
+							<div class="pl-2">
+								<?php if ( have_rows( 'appointments', 'option' ) ) : ?>
+									<?php while ( have_rows( 'appointments', 'option' ) ) : ?>
+										<?php the_row(); ?>
+										<?php if ( have_rows( 'items' ) ) : ?>
+											<ul class="flex flex-col gap-4 list-none mt-4 border-l border-gray-200 pl-4">
+												<?php while ( have_rows( 'items' ) ) : ?>
+													<?php the_row(); ?>
+													<li class="flex flex-col space-y-0">
 												<span class="text-gray-700">
 													<?php drras_kses_e( get_sub_field( 'title' ) ); ?>
 												</span>
-												<?php if ( $desc = get_sub_field( 'description' ) ) : ?>
-													<span class="text-sm text-gray-500">
+														<?php if ( $desc = get_sub_field( 'description' ) ) : ?>
+															<span class="text-sm text-gray-500">
 														<?php drras_kses_e( $desc ); ?>
 													</span>
-												<?php endif; ?>
-											</li>
-										<?php endwhile; ?>
-									</ul>
+														<?php endif; ?>
+													</li>
+												<?php endwhile; ?>
+											</ul>
+										<?php endif; ?>
+									<?php endwhile; ?>
 								<?php endif; ?>
-							<?php endwhile; ?>
-						<?php endif; ?>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+				<!-- /Appointments, Licensures, Memberships -->
 
+				<!-- Publications -->
+				<div
+					x-data="{activeAccordion: '', setActiveAccordion(id) { this.activeAccordion = (this.activeAccordion == id) ? '' : id }}"
+					class="relative w-full mt-6">
 
-		<div
-			x-data="{activeAccordion: '', setActiveAccordion(id) { this.activeAccordion = (this.activeAccordion == id) ? '' : id }}"
-			class="relative w-full mt-6">
-
-			<div x-data="{ id: $id('accordion') }"
-			     :class="{ 'text-neutral-900': activeAccordion==id, '': activeAccordion!=id }"
-			     class="group">
-				<h3 @click="setActiveAccordion(id)" class="flex flex-row items-center select-none cursor-pointer">
-					<svg class="w-5 h-5 duration-300 ease-out" :class="{ '-rotate-[45deg]': activeAccordion==id }"
-					     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-					     stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
-					</svg>
-					<span class="font-light text-xl tracking-wide">Publications</span>
-				</h3>
-				<div x-show="activeAccordion==id" x-collapse x-cloak>
-					<div class="pl-2">
-						<?php if ( have_rows( 'publications', 'option' ) ) : ?>
-							<?php while ( have_rows( 'publications', 'option' ) ) : ?>
-								<?php the_row(); ?>
-								<?php if ( have_rows( 'items' ) ) : ?>
-									<ul class="flex flex-col gap-4 list-none mt-4 border-l border-gray-200 pl-4">
-										<?php while ( have_rows( 'items' ) ) : ?>
-											<?php the_row(); ?>
-											<li class="flex flex-col space-y-0">
+					<div x-data="{ id: $id('accordion') }"
+					     :class="{ 'text-neutral-900': activeAccordion==id, '': activeAccordion!=id }"
+					     class="group">
+						<h3 @click="setActiveAccordion(id)"
+						    class="flex flex-row items-center select-none cursor-pointer">
+							<svg class="w-5 h-5 duration-300 ease-out"
+							     :class="{ '-rotate-[45deg]': activeAccordion==id }"
+							     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+							     stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/>
+							</svg>
+							<span class="font-light text-xl tracking-wide">Publications</span>
+						</h3>
+						<div x-show="activeAccordion==id" x-collapse x-cloak>
+							<div class="pl-2">
+								<?php if ( have_rows( 'publications', 'option' ) ) : ?>
+									<?php while ( have_rows( 'publications', 'option' ) ) : ?>
+										<?php the_row(); ?>
+										<?php if ( have_rows( 'items' ) ) : ?>
+											<ul class="flex flex-col gap-4 list-none mt-4 border-l border-gray-200 pl-4">
+												<?php while ( have_rows( 'items' ) ) : ?>
+													<?php the_row(); ?>
+													<li class="flex flex-col space-y-0">
 												<span class="text-gray-700 text-sm">
 													<?php drras_kses_e( drras_boldify_rassouli( get_sub_field( 'citation' ) ) ); ?>
 												</span>
-											</li>
-										<?php endwhile; ?>
-									</ul>
+													</li>
+												<?php endwhile; ?>
+											</ul>
+										<?php endif; ?>
+									<?php endwhile; ?>
 								<?php endif; ?>
-							<?php endwhile; ?>
-						<?php endif; ?>
+							</div>
+						</div>
 					</div>
 				</div>
+				<!-- /Publications -->
+
 			</div>
-		</div>
+			<!-- /About, CV, Education, Appointments, Publications -->
 
-		<h2 class="uppercase font-bold text-sm text-gray-600 mt-8">Certification & Membership</h2>
+			<!-- Membership Logos -->
+			<div class="">
 
-		<?php if ( have_rows( 'certifications', 'option' ) ) : ?>
-			<?php while ( have_rows( 'certifications', 'option' ) ) : ?>
-				<?php the_row(); ?>
-				<?php if ( have_rows( 'items' ) ) : ?>
-					<div class="grid grid-cols-6 text-gray-400 gap-8 mt-6">
-						<?php while ( have_rows( 'items' ) ) : ?>
-							<?php the_row(); ?>
-							<div
-								class="flex flex-row items-center justify-center bg-white shadow-md rounded-md aspect-square p-6"
-								title="<?php esc_attr_e( get_sub_field( 'title' ) ); ?>">
-								<img src="<?php echo drras_get_acf_image_sub_field_url( 'image', 'medium' ) ?>"
-								     alt="<?php esc_attr_e( get_sub_field( 'title' ) ); ?>"
-								     class=""
-								/>
+				<h2 class="uppercase font-bold text-sm text-gray-600">Certification & Membership</h2>
+
+				<?php if ( have_rows( 'certifications', 'option' ) ) : ?>
+					<?php while ( have_rows( 'certifications', 'option' ) ) : ?>
+						<?php the_row(); ?>
+						<?php if ( have_rows( 'items' ) ) : ?>
+							<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 text-gray-400 gap-4 mt-6">
+								<?php while ( have_rows( 'items' ) ) : ?>
+									<?php the_row(); ?>
+									<div
+										class="flex flex-row items-center justify-center bg-white shadow-md rounded-md aspect-square p-6"
+										title="<?php esc_attr_e( get_sub_field( 'title' ) ); ?>">
+										<img src="<?php echo drras_get_acf_image_sub_field_url( 'image', 'medium' ) ?>"
+										     alt="<?php esc_attr_e( get_sub_field( 'title' ) ); ?>"
+										     class=""
+										/>
+									</div>
+								<?php endwhile; ?>
 							</div>
-						<?php endwhile; ?>
-					</div>
+						<?php endif; ?>
+					<?php endwhile; ?>
 				<?php endif; ?>
-			<?php endwhile; ?>
-		<?php endif; ?>
-
-	</div>
-</section>
-
-
-<?php if ( have_rows( 'education', 'option' ) ) : ?>
-	<?php while ( have_rows( 'education', 'option' ) ) : ?>
-		<?php the_row(); ?>
-		<?php if ( have_rows( 'items' ) ) : ?>
-			<ul class="flex flex-col gap-4 list-none mt-12">
-				<?php while ( have_rows( 'items' ) ) : ?>
-					<?php the_row(); ?>
-					<li class="flex flex-col space-y-0">
-									<span class="text-gray-700">
-										<?php drras_kses_e( get_sub_field( 'title' ) ); ?>
-									</span>
-						<?php if ( $desc = get_sub_field( 'description' ) ) : ?>
-							<span class="text-sm text-gray-500">
-											<?php drras_kses_e( $desc ); ?>
-										</span>
-						<?php endif; ?>
-					</li>
-				<?php endwhile; ?>
-			</ul>
-		<?php endif; ?>
-	<?php endwhile; ?>
-<?php endif; ?>
-
-
-<?php if ( have_rows( 'appointments', 'option' ) ) : ?>
-	<?php while ( have_rows( 'appointments', 'option' ) ) : ?>
-		<?php the_row(); ?>
-		<?php if ( have_rows( 'items' ) ) : ?>
-			<ul class="flex flex-col gap-4 list-none mt-12">
-				<?php while ( have_rows( 'items' ) ) : ?>
-					<?php the_row(); ?>
-					<li class="flex flex-col space-y-0">
-									<span class="text-gray-700">
-										<?php drras_kses_e( get_sub_field( 'title' ) ); ?>
-									</span>
-						<?php if ( $desc = get_sub_field( 'description' ) ) : ?>
-							<span class="text-sm text-gray-500">
-											<?php drras_kses_e( $desc ); ?>
-										</span>
-						<?php endif; ?>
-					</li>
-				<?php endwhile; ?>
-			</ul>
-		<?php endif; ?>
-	<?php endwhile; ?>
-<?php endif; ?>
-
-
-<?php if ( have_rows( 'publications', 'option' ) ) : ?>
-	<?php while ( have_rows( 'publications', 'option' ) ) : ?>
-		<?php the_row(); ?>
-		<?php if ( have_rows( 'items' ) ) : ?>
-			<ul class="flex flex-col gap-4 list-none mt-12">
-				<?php while ( have_rows( 'items' ) ) : ?>
-					<?php the_row(); ?>
-					<li class="flex flex-col space-y-0">
-									<span class="text-gray-700">
-										<?php drras_kses_e( drras_boldify_rassouli( get_sub_field( 'citation' ) ) ); ?>
-									</span>
-					</li>
-				<?php endwhile; ?>
-			</ul>
-		<?php endif; ?>
-	<?php endwhile; ?>
-<?php endif; ?>
-
-
-<section class="py-20 bg-gray-100 tails-selected-element">
-	<div class="flex flex-col items-start px-10 mx-auto space-y-20 lg:space-y-0 lg:flex-row max-w-7xl">
-
-		<div
-			class="flex flex-col justify-center flex-shrink-0 w-full h-full max-w-lg space-y-5 text-gray-800 lg:max-w-none lg:w-5/12 xl:w-6/12">
-			<div class="flex items-center space-x-5 text-blue-500" data-primary="blue-500">
-				<div class="w-20 h-0.5 bg-blue-500" data-primary="blue-500"></div>
-				<p class="text-sm font-bold tracking-wide uppercase">Dr. Rassouli</p>
 			</div>
-			<h2 class="text-4xl font-black xl:text-5xl">Certifications &amp; Memberships</h2>
-			<div
-				class="relative flex flex-col items-start w-full space-y-5 sm:items-center sm:flex-row sm:space-y-0 sm:space-x-3">
-				<a href="#_"
-				   class="inline-block w-full px-6 py-4 font-bold text-center text-white bg-blue-600 rounded sm:w-auto"
-				   data-primary="blue-600" data-rounded="rounded">Learn More</a>
-			</div>
+			<!-- /Membership Logos -->
+
 		</div>
 
-		<div class="max-w-lg lg:max-w-none lg:w-7/12 lg:pl-8 xl:w-6/12">
-			<?php if ( have_rows( 'certifications', 'option' ) ) : ?>
-				<?php while ( have_rows( 'certifications', 'option' ) ) : ?>
-					<?php the_row(); ?>
-					<?php if ( have_rows( 'items' ) ) : ?>
-						<div class="grid grid-cols-3 text-gray-400 gap-8">
-							<?php
-							$max = 9;
-							$i   = 0;
-							?>
-							<?php while ( have_rows( 'items' ) ) : ?>
-								<?php the_row(); ?>
-								<div
-									class="flex flex-row items-center justify-center bg-white shadow-md rounded-md aspect-square p-6"
-									title="<?php esc_attr_e( get_sub_field( 'title' ) ); ?>">
-									<img src="<?php echo drras_get_acf_image_sub_field_url( 'image', 'medium' ) ?>"
-									     alt="<?php esc_attr_e( get_sub_field( 'title' ) ); ?>"
-									     class=""
-									/>
-								</div>
-								<?php $i ++; ?>
-								<?php
-								if ( $max === $i ) {
-									break;
-								}
-								?>
-							<?php endwhile; ?>
-						</div>
-					<?php endif; ?>
-				<?php endwhile; ?>
-			<?php endif; ?>
-		</div>
+
 	</div>
 </section>
 

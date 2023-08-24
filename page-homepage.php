@@ -37,7 +37,7 @@
 				<div class="relative flex items-center justify-center w-full md:w-1/2 md:pt-0">
 					<img
 						src="<?php echo drras_get_acf_image_field_url( 'header_image', get_the_ID(), 'medium_large' ); ?>"
-						class="relative w-full h-auto h-full max-w-sm md:w-96 rounded-xl shadow-xl"
+						class="relative w-full h-auto max-w-sm md:w-96 rounded-xl shadow-xl"
 						alt="Dr. Rassouli - Cosmetic Surgeon in Owen Sound, Ontario">
 				</div>
 			</div>
@@ -78,6 +78,13 @@
 					<?php endforeach; ?>
 				</div>
 			<?php endif; ?>
+			<div
+				class="relative flex flex-col justify-center mt-12">
+				<a href="<?php echo drras_get_permalink( 'treatments' ); ?>"
+				   class="inline-block w-full px-6 py-5 font-bold text-center text-white bg-blue-600 rounded sm:w-auto leading-none">
+					<?php drras_kses_e( drras_get_post_field( 'treatment_see_all_link_text', 'See all available treatments' ) ); ?>
+				</a>
+			</div>
 		</div>
 	</div>
 </section>

@@ -9,3 +9,5 @@
 .default-mb {
     @apply mb-8 lg:mb-10 xl:mb-12;
 }
+
+[x-cloak] { display: none !important; }

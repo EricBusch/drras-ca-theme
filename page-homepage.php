@@ -24,7 +24,7 @@
 					<div class="flex flex-row items-center space-x-4 mx-auto md:mx-0">
 						<a href="<?php echo drras_get_permalink( 'contact' ) ?>"
 						   title="Contact us"
-						   class="w-full px-5 py-2 text-lg font-normal text-center text-black text-opacity-90 bg-profile-yellow-light rounded-lg md:w-auto whitespace-nowrap">
+						   class="w-full px-5 py-2 text-lg font-normal text-center text-gray-900 bg-profile-yellow-light ring-2 ring-profile-yellow-dark rounded-lg md:w-auto whitespace-nowrap">
 							<?php drras_kses_e( drras_phrase( 'contact_us' ) ); ?>
 						</a>
 						<a href="<?php echo drras_get_permalink( 'treatments' ) ?>"

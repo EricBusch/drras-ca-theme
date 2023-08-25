@@ -10,4 +10,35 @@
     @apply mb-8 lg:mb-10 xl:mb-12;
 }
 
-[x-cloak] { display: none !important; }
+[x-cloak] {
+    display: none !important;
+}
+
+/**
+ * Contact Form 7 Styles
+ */
+
+main .wpcf7-form {
+    @apply flex flex-col max-w-2xl space-y-4;
+}
+
+main .wpcf7-form p {
+    @apply mb-0;
+}
+
+main .wpcf7 label {
+    @apply text-xs text-gray-600 font-bold uppercase;
+}
+
+main .wpcf7 input[type="text"],
+main .wpcf7 input[type="email"] {
+    @apply border border-gray-300 shadow-sm px-3 py-2 w-full max-w-sm rounded text-lg font-normal;
+}
+
+main .wpcf7 textarea {
+    @apply border border-gray-300 shadow-sm px-3 py-2 w-full rounded text-lg font-normal;
+}
+
+main .wpcf7 .wpcf7-submit {
+    @apply inline-flex items-center gap-x-2 rounded-md bg-gradient-to-b from-gray-800 to-gray-900 px-5 py-4 font-semibold text-gray-50 hover:text-white shadow hover:shadow-none transform duration-100 hover:translate-y-px leading-none cursor-pointer;
+}

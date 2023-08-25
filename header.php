@@ -7,6 +7,14 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<script src="//cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js" defer></script>
 	<script src="//unpkg.com/alpinejs" defer></script>
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20230628132552">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20230628132552">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20230628132552">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg?v=20230628132552" color="#5bbad5">
+	<link rel="shortcut icon" href="/favicon.ico?v=20230628132552">
+	<meta name="apple-mobile-web-app-title" content="Dr. Rassouli - Facial Cosmetic & Reconstructive Surgery Specialist">
+	<meta name="application-name" content="Dr. Rassouli - Facial Cosmetic & Reconstructive Surgery Specialist">
+	<meta name="msapplication-TileColor" content="#da532c">
 	<?php wp_head(); ?>
 </head>
 

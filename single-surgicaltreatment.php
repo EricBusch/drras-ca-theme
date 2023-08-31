@@ -73,17 +73,17 @@ $next_treatment = drras_get_next_surgicaltreatment( get_the_ID() );
 				<a href="<?php echo esc_url( get_permalink( $prev_treatment->ID ) ); ?>"
 				   title="View <?php esc_attr_e( $prev_treatment->post_title ); ?> treatment"
 				   class="w-full md:w-1/2 group flex flex-row items-center h-36 md:h-64 bg-gradient-to-r from-white to-gray-100">
-					<div class="flex flex-col items-end mr-12 gap-2 w-full">
+					<div class="flex flex-col items-end mr-6 lg:mr-12 gap-2 w-full">
 						<img
 							src="<?php echo drras_get_acf_image_field_url( 'header_image', $prev_treatment->ID ) ?>"
 							alt="Image for <?php esc_attr_e( $prev_treatment->post_title ); ?>"
 							class="rounded-md w-16 h-16 aspect-square object-contain ring-2 ring-offset-2 ring-gray-200 group-hover:ring-gray-300 transition duration-300">
 
-						<div class="w-full font-bold flex flex-row items-center justify-end text-xl space-x-2">
+						<div class="w-full font-bold flex flex-row items-center justify-end text-xs md:text-sm lg:text-lg space-x-1 md:space-x-2">
 							<span class="group-hover:translate-x-0.5 duration-200">
 								<?php echo drras_get_svg( 'angles-left-regular' ); ?>
 							</span>
-							<span><?php esc_html_e( $prev_treatment->post_title ); ?></span>
+							<span class="whitespace-nowrap"><?php esc_html_e( $prev_treatment->post_title ); ?></span>
 						</div>
 					</div>
 				</a>
@@ -91,14 +91,14 @@ $next_treatment = drras_get_next_surgicaltreatment( get_the_ID() );
 				<a href="<?php echo esc_url( get_permalink( $next_treatment->ID ) ); ?>"
 				   title="View <?php esc_attr_e( $next_treatment->post_title ); ?> treatment"
 				   class="w-full md:w-1/2 group flex flex-row items-center h-36 md:h-64 bg-gradient-to-l from-white to-gray-100">
-					<div class="flex flex-col items-start ml-12 gap-2 w-full">
+					<div class="flex flex-col items-start ml-6 lg:ml-12 gap-2 w-full">
 						<img
 							src="<?php echo drras_get_acf_image_field_url( 'header_image', $next_treatment->ID ) ?>"
 							alt="Image for <?php esc_attr_e( $next_treatment->post_title ); ?>"
 							class="rounded-md w-16 h-16 aspect-square object-contain ring-2 ring-offset-2 ring-gray-200 group-hover:ring-gray-300 transition duration-300">
 
-						<div class="w-full font-bold flex flex-row items-center justify-start text-xl space-x-2">
-							<span><?php esc_html_e( $next_treatment->post_title ); ?></span>
+						<div class="w-full font-bold flex flex-row items-center justify-start text-xs md:text-sm lg:text-lg space-x-1 md:space-x-2">
+							<span class="whitespace-nowrap"><?php esc_html_e( $next_treatment->post_title ); ?></span>
 							<span class="group-hover:translate-x-0.5 duration-200">
 								<?php echo drras_get_svg( 'angles-right-regular' ); ?>
 							</span>

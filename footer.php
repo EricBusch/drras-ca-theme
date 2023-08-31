@@ -49,7 +49,7 @@
 						?>
 
 
-						<div class="grid grid-cols-2">
+						<div class="grid grid-cols-1 lg:grid-cols-2">
 
 							<div class="flex flex-col space-y-1 text-gray-300">
 
@@ -85,7 +85,7 @@
 							</div>
 
 							<?php if ( $address ) : ?>
-								<address class="not-italic text-gray-300">
+								<address class="not-italic text-gray-300 mt-6 lg:mt-0">
 									<?php echo $address; ?>
 								</address>
 							<?php endif; ?>

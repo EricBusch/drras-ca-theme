@@ -1,3 +1,17 @@
+# Develop
+
+```bash
+cd /Sites/wp-drrassoulica/wp-content/themes/drras-ca-theme
+npm run watch
+```
+
+## Todo
+
+- Add new Blog page
+- Set Blog page as page for posts in Settings > Reading
+- Add Blog Page ID to `DRRAS_ROUTES`
+- Add Blog to main menu
+
 <p><img src="http://tailpress.io/images/tailpress100.svg" width="260" alt="TailPress"></p>
 
 [![GitHub release](https://img.shields.io/github/release/jeffreyvr/tailpress?include_prereleases=&sort=semver)](https://github.com/jeffreyvr/tailpress/releases/)
